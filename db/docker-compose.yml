@@ -1,0 +1,15 @@
+version: '3'
+services:
+  node:
+    image: node:latest
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    container_name: dasboard_c
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./dashboard:/app  # Mount your application code
+    working_dir: /app  # Set the working directory in the container
+    command: ["npm", "start"]  # Specify the command to start your React app
